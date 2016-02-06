@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody *ngFor="#anvandare of anvandarna">
-      <tr class="active">
+      <tr>
         <td>{{anvandare.anvandarnamn}}</td>
         <td>{{anvandare.fornamn}}</td>
         <td>{{anvandare.efternamn}}</td>
@@ -24,25 +24,29 @@
           <div class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meny <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li *ngIf="anvandare.harRoller()"><a (click)="visaRoller(anvandare)">visa roller</a></li>
-              <li *ngIf="anvandare.harTaBortAllaRollerLank()"><a (click)="taBortAllaRoller(anvandare)">ta bort alla roller</a></li>
-              <li *ngIf="anvandare.harTaBortLank()"><a (click)="taBortAnvandare(anvandare)">ta bort användare</a></li>
+              <li *ngIf="anvandare.harRoller()"><a role="button" (click)="visaRoller(anvandare)">visa roller</a></li>
+              <li *ngIf="anvandare.harTaBortAllaRollerLank()"><a role="button" (click)="taBortAllaRoller(anvandare)">ta bort alla roller</a></li>
+              <li *ngIf="anvandare.harTaBortLank()"><a role="button" (click)="taBortAnvandare(anvandare)">ta bort användare</a></li>
             </ul>
           </div>
         </td>
       </tr>
       <tr *ngIf="visasRoller(anvandare)">
         <td colspan="5">
-          <table class="table table-condensed">
-            <thead>
-              <th>namn</th>
-            </thead>
-            <tbody>
-              <tr *ngFor="#roll of roller(anvandare.id)">
-                <td>{{roll.rollNamn}}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="panel panel-info">
+            <div class="panel-heading">Roller för {{anvandare.anvandarnamn}}
+              <div style="float: right">
+                <a role="button" (click)="doljRoller(anvandare.id)"><span class="glyphicon glyphicon-remove"></span></a>
+              </div>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="#roll of roller(anvandare.id)">
+                  {{roll.rollNamn}}
+                </li>
+              </ul>
+            </div>
+          </div>
         </td>
       </tr>
     </tbody>
