@@ -32,4 +32,8 @@ export class AnvandareService {
     taBortAllaRoller(anvandare: Anvandare){
       return this.http.delete(anvandare.lankMedRelationOchMetod("roller", "DELETE").uri);
     }
+
+    laggTillRoll(anvandareId: string, rollId: string){
+      this.http.put('http://localhost:8080/behorighet/anvandarroll/' + anvandareId + '/' + rollId, "").subscribe(data => console.log(data));
+    }
 }

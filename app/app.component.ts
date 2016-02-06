@@ -4,6 +4,7 @@ import {RouteConfig, RouterLink,RouterOutlet} from 'angular2/router';
 import {MenyComponent} from './meny.component'
 import {ListaAnvandareComponent} from './lista-anvandare.component';
 import {AnvandareService} from './anvandare.service';
+import {RollService} from './roll.service';
 
 @Component({
     selector: 'behorighet',
@@ -13,7 +14,7 @@ import {AnvandareService} from './anvandare.service';
     `,
     //styleUrls: ['node_modules/bootstrap/dist/css/bootstrap.css'],
     directives: [MenyComponent, ListaAnvandareComponent, RouterOutlet],
-    providers: [HTTP_PROVIDERS, AnvandareService],
+    providers: [HTTP_PROVIDERS, AnvandareService, RollService],
 })
 @RouteConfig([
   {path:'lista-anvandare', name:'ListaAnvändare', component: ListaAnvandareComponent}
