@@ -46,5 +46,6 @@ export class ListaAnvandareComponent implements OnInit {
 
     public taBortAllaRoller(anvandare: Anvandare){
       this._anvandareService.taBortAllaRoller(anvandare).subscribe(data => this.hamtaAllaAnvandare());
+      this.anvandareRoller.delete(anvandare.id);
     }
 }
