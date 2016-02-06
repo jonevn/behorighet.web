@@ -7,14 +7,14 @@ export class AnvandareService {
 
     constructor(public http: Http) {}
 
-    getAllaAnvandare(){
+    allaAnvandare(){
         return this.http.get('http://localhost:8080/behorighet/anvandare')
             .map(res => res.json())
             .map((allaAnvandare: Array<any>) => {
                 let result: Array<Anvandare> = [];
                 if(allaAnvandare) {
                     allaAnvandare.forEach((anvandare) => {
-                    result.push(new Anvandare(anvandare.id, anvandare.namn, anvandare.links))
+                    result.push(new Anvandare(anvandare.id, anvandare.anvandarnamn, anvandare.fornamn, anvandare.efternamn, anvandare.epost, anvandare.links))
                 });
             }
             return result;
@@ -22,6 +22,14 @@ export class AnvandareService {
     }
 
     taBort(anvandare: Anvandare){
-      this.http.delete(anvandare.taBortLank().uri);
+      return this.http.delete(anvandare.lankMedRelation("taBort").uri);
+    }
+
+    hamtaRoller(anvandare: Anvandare){
+      return this.http.get(anvandare.lankMedRelationOchMetod("roller", "GET").uri).map(res => res.json());
+    }
+
+    taBortAllaRoller(anvandare: Anvandare){
+      return this.http.delete(anvandare.lankMedRelationOchMetod("roller", "DELETE").uri);
     }
 }

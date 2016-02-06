@@ -1,21 +1,18 @@
 import {Component, OnInit} from 'angular2/core';
 import {Anvandare} from './types/anvandare';
+import {Roll} from './types/roll';
 import {AnvandareService} from './anvandare.service';
 
 @Component({
   selector: 'lista-anvandare',
-  template: `
-    <ul>
-      <li *ngFor="#anvandare of anvandarna">
-        <span>{{anvandare.id}}</span> {{anvandare.namn}} <a href="#" (click)="taBortAnvandare(anvandare)" *ngIf="anvandare.harTaBortLank()">ta bort</a>
-      </li>
-    </ul>
-  `,
+  templateUrl: 'app/lista-anvandare.html',
+  //styleUrls: ['node_modules/bootstrap/dist/css/bootstrap.css'],
   providers: [AnvandareService]
 })
 export class ListaAnvandareComponent implements OnInit {
 
     private anvandarna : Anvandare[];
+    private anvandareRoller = new Map<string, Roll[]>();
 
     constructor(private _anvandareService: AnvandareService) {}
 
@@ -24,11 +21,26 @@ export class ListaAnvandareComponent implements OnInit {
     }
 
     hamtaAllaAnvandare(){
-      this._anvandareService.getAllaAnvandare().subscribe(anvandare => this.anvandarna = anvandare);
+      this._anvandareService.allaAnvandare().subscribe(anvandare => this.anvandarna = anvandare);
     }
 
-    taBortAnvandare(anvandare: Anvandare){
-      this._anvandareService.taBort(anvandare);
+    public visaRoller(anvandare: Anvandare){
+      this._anvandareService.hamtaRoller(anvandare).subscribe(anvandarroller => this.anvandareRoller.set(anvandare.id, anvandarroller));
     }
 
+    public visasRoller(anvandare: Anvandare){
+      return this.anvandareRoller.has(anvandare.id);
+    }
+
+    public roller(id: string){
+      return this.anvandareRoller.get(id);
+    }
+
+    public taBortAnvandare(anvandare: Anvandare){
+      this._anvandareService.taBort(anvandare).subscribe(data => this.hamtaAllaAnvandare());
+    }
+
+    public taBortAllaRoller(anvandare: Anvandare){
+      this._anvandareService.taBortAllaRoller(anvandare).subscribe(data => this.hamtaAllaAnvandare());
+    }
 }

@@ -11,6 +11,7 @@ import {AnvandareService} from './anvandare.service';
         <meny></meny>
         <router-outlet></router-outlet>
     `,
+    //styleUrls: ['node_modules/bootstrap/dist/css/bootstrap.css'],
     directives: [MenyComponent, ListaAnvandareComponent, RouterOutlet],
     providers: [HTTP_PROVIDERS, AnvandareService],
 })

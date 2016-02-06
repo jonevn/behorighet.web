@@ -1,30 +1,39 @@
+import {BasTyp} from './bastyp';
 import {Link} from './link';
 
-export class Anvandare {
+export class Anvandare extends BasTyp {
     id: string;
-    namn: string;
-    links: Link[];
+    anvandarnamn: string;
+    fornamn: string;
+    efternamn: string;
+    epost: string;
 
-    constructor(id: string, namn: string, links: Link[]) {
+    constructor(id: string, anvandarnamn: string, fornamn: string, efternamn: string, epost: string, links: Link[]) {
         this.id = id;
-        this.namn = namn;
-        this.links = links;
+        this.anvandarnamn = anvandarnamn;
+        this.fornamn = fornamn;
+        this.efternamn = efternamn;
+        this.epost = epost;
+        super(links);
     }
 
     harTaBortLank(){
-      for(var link of this.links){
-          if(link.relation == "taBort"){
-            return true;
-          }
-      }
-      return false;
+      return super.harLankMedRelation("taBort");
+    }
+
+    harTaBortAllaRollerLank(){
+      return super.harLankMedRelationOchMetod("roller", "DELETE");
     }
 
     taBortLank(){
-      for(var link of this.links){
-          if(link.relation == "taBort"){
-            return link;
-          }
-      }
+      return super.lankMedRelation("taBort");
+    }
+
+    taBortAllaRollerLank(){
+      return super.lankMedRelationOchMetod("roller", "DELETE");
+    }
+
+    harRoller(){
+      return super.harLankMedRelationOchMetod("roller", "GET");
     }
 }
