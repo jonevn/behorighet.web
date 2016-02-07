@@ -7,7 +7,7 @@
       <li class="dropdown" [ngClass]="{'active': isActive('/lista-anvandare')}">
         <a [routerLink]="['ListaAnvändare']">Användare</a>
         <ul class="dropdown-menu">
-          <li><a role="button">Skapa användare</a></li>
+          <li><a [routerLink]="['SkapaAnvändare']">Skapa användare</a></li>
         </ul>
       </li>
       <li class="dropdown" [ngClass]="{'active': isActive('/lista-roller')}">
@@ -16,7 +16,6 @@
           <li><a role="button">Skapa roll</a></li>
         </ul>
       </li>
-
       <li class="dropdown" [ngClass]="{'active': isActive('/lista-rattigheter')}">
         <a [routerLink]="['ListaRattigheter']">Rättigheter</a>
         <ul class="dropdown-menu">

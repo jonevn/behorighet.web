@@ -1,5 +1,5 @@
 import {Injectable} from 'angular2/core';
-import { Http } from 'angular2/http';
+import { Http, Headers } from 'angular2/http';
 import {Anvandare} from './types/anvandare';
 
 @Injectable()
@@ -36,4 +36,10 @@ export class AnvandareService {
     laggTillRoll(anvandareId: string, rollId: string){
       this.http.put('http://localhost:8080/behorighet/anvandarroll/' + anvandareId + '/' + rollId, "").subscribe(data => console.log(data));
     }
-}
+
+    skapa(anvandare: Anvandare){
+      var headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      return this.http.post('http://localhost:8080/behorighet/anvandare', JSON.stringify(anvandare), {headers : headers});
+    }
+  }

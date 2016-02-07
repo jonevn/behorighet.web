@@ -1,0 +1,23 @@
+<panel class="panel panel-primary">
+  <div class="panel-heading">Skapa användare</div>
+  <form>
+    <div class="form-group">
+      <label for="anvandarnamnInput">Användarnamn</label>
+      <input type="text" class="form-control" id="anvandarnamnInput" placeholder="Användarnamn" [(ngModel)]="anvandarnamn" required>
+    </div>
+    <div class="form-group">
+      <label for="fornamnInput">Förnamn</label>
+      <input type="text" class="form-control" id="fornamnInput" placeholder="Förnamn" [(ngModel)]="fornamn" required>
+    </div>
+    <div class="form-group">
+      <label for="efternamnInput">Efternamn</label>
+      <input type="text" class="form-control" id="efternamnInput" placeholder="Efternamn" [(ngModel)]="efternamn" required>
+    </div>
+    <div class="form-group">
+      <label for="epostInput">Användarnamn</label>
+      <input type="email" class="form-control" id="epostInput" placeholder="Epost" [(ngModel)]="epost" required>
+    </div>
+    <button (click)="avbryt()" type="submit" class="btn btn-danger">Avbryt</button>
+    <button (click)="skapa()" type="submit" class="btn btn-success">Skapa</button>
+  </form>
+</panel>
