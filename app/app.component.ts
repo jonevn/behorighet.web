@@ -4,8 +4,10 @@ import {RouteConfig, RouterLink,RouterOutlet} from 'angular2/router';
 import {MenyComponent} from './meny.component'
 import {ListaAnvandareComponent} from './lista-anvandare.component';
 import {ListaRollerComponent} from './lista-roller.component';
+import {ListaRattigheterComponent} from './lista-rattigheter.component';
 import {AnvandareService} from './anvandare.service';
 import {RollService} from './roll.service';
+import {RattighetService} from './rattighet.service';
 
 @Component({
     selector: 'behorighet',
@@ -14,11 +16,12 @@ import {RollService} from './roll.service';
         <router-outlet></router-outlet>
     `,
     //styleUrls: ['node_modules/bootstrap/dist/css/bootstrap.css'],
-    directives: [MenyComponent, ListaAnvandareComponent, ListaRollerComponent, RouterOutlet],
-    providers: [HTTP_PROVIDERS, AnvandareService, RollService],
+    directives: [MenyComponent, ListaAnvandareComponent, ListaRollerComponent, ListaRattigheterComponent, RouterOutlet],
+    providers: [HTTP_PROVIDERS, AnvandareService, RollService, RattighetService],
 })
 @RouteConfig([
   {path:'lista-anvandare', name:'ListaAnvändare', component: ListaAnvandareComponent},
-  {path:'lista-roller', name:'ListaRoller', component: ListaRollerComponent}
+  {path:'lista-roller', name:'ListaRoller', component: ListaRollerComponent},
+  {path:'lista-rattigheter', name:'ListaRattigheter', component: ListaRattigheterComponent}
 ])
 export class AppComponent {}

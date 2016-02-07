@@ -6,7 +6,7 @@
     <ul class="nav navbar-nav">
       <li [ngClass]="{active: isActive('/lista-anvandare')}"><a [routerLink]="['ListaAnvändare']">Användare</a></li>
       <li [ngClass]="{active: isActive('/lista-roller')}"><a [routerLink]="['ListaRoller']">Roller</a></li>
-      <li><a href="#">Rättigheter</a></li>
+      <li [ngClass]="{active: isActive('/lista-rattigheter')}"><a [routerLink]="['ListaRattigheter']">Rättigheter</a></li>
     </ul>
   </div>
 </nav>

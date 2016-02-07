@@ -1,0 +1,29 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">Rättigheter</div>
+  <div class="panel-body">
+      Här listas rättigheter i systemet
+  </div>
+
+  <table class="table table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>namn</th>
+        <th>beskrivning</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="#rattighet of rattigheter">
+      <tr>
+        <td>{{rattighet.namn}}</td>
+        <td>{{rattighet.beskrivning}}</td>
+        <td>
+          <div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meny <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
