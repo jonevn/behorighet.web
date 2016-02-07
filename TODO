@@ -1,0 +1,18 @@
+generellt:
+strukturera om filerna
+backendservice, wrappa http
+filtrera och paginera, datatables?
+meddelanden?
+varför loggas det ut "no element found" vid vissa server anrop?
+
+funktioner:
+användare
+ - lägg till roll till användare
+ - redigera
+roll
+ - skapa
+  - ska gå att rättigheter från annan roll
+ - ta bort
+rättighet
+ - skapa
+ - ta bort
