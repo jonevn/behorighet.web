@@ -4,9 +4,25 @@
       <a class="navbar-brand">Behörighetssystemet</a>
     </div>
     <ul class="nav navbar-nav">
-      <li [ngClass]="{active: isActive('/lista-anvandare')}"><a [routerLink]="['ListaAnvändare']">Användare</a></li>
-      <li [ngClass]="{active: isActive('/lista-roller')}"><a [routerLink]="['ListaRoller']">Roller</a></li>
-      <li [ngClass]="{active: isActive('/lista-rattigheter')}"><a [routerLink]="['ListaRattigheter']">Rättigheter</a></li>
+      <li class="dropdown" [ngClass]="{'active': isActive('/lista-anvandare')}">
+        <a [routerLink]="['ListaAnvändare']">Användare</a>
+        <ul class="dropdown-menu">
+          <li><a role="button">Skapa användare</a></li>
+        </ul>
+      </li>
+      <li class="dropdown" [ngClass]="{'active': isActive('/lista-roller')}">
+        <a [routerLink]="['ListaRoller']">Roller</a>
+        <ul class="dropdown-menu">
+          <li><a role="button">Skapa roll</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown" [ngClass]="{'active': isActive('/lista-rattigheter')}">
+        <a [routerLink]="['ListaRattigheter']">Rättigheter</a>
+        <ul class="dropdown-menu">
+          <li><a role="button">Skapa rättighet</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </nav>
