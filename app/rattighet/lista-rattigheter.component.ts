@@ -1,6 +1,6 @@
 import {Component, OnInit} from 'angular2/core';
-import {Rattighet} from './types/rattighet';
-import {RattighetService} from './rattighet.service';
+import {Rattighet} from '../types/rattighet';
+import {RattighetService} from '../services/rattighet.service';
 
 @Component({
   selector: 'lista-rattigheter',

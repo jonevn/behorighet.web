@@ -1,6 +1,6 @@
 import {Injectable} from 'angular2/core';
 import { Http, Headers } from 'angular2/http';
-import {Anvandare} from './types/anvandare';
+import {Anvandare} from '../types/anvandare';
 
 @Injectable()
 export class AnvandareService {

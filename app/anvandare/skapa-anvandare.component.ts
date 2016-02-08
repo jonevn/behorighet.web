@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {Location, Router} from 'angular2/router';
-import {Anvandare} from './types/anvandare';
-import {AnvandareService} from './anvandare.service';
+import {Anvandare} from '../types/anvandare';
+import {AnvandareService} from '../services/anvandare.service';
 
 
 @Component({

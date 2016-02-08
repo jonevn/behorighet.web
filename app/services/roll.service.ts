@@ -1,6 +1,6 @@
 import {Injectable} from 'angular2/core';
 import { Http } from 'angular2/http';
-import { Roll } from './types/roll';
+import { Roll } from '../types/roll';
 
 @Injectable()
 export class RollService {

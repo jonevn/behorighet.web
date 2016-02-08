@@ -1,5 +1,4 @@
 generellt:
-strukturera om filerna
 backendservice, wrappa http
 filtrera och paginera, datatables?
 meddelanden?

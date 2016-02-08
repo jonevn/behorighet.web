@@ -1,7 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
-import {Anvandare} from './types/anvandare';
-import {Roll} from './types/roll';
-import {AnvandareService} from './anvandare.service';
+import {Anvandare} from '../types/anvandare';
+import {Roll} from '../types/roll';
+import {AnvandareService} from '../services/anvandare.service';
 
 @Component({
   selector: 'lista-anvandare',

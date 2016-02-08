@@ -1,6 +1,6 @@
 import {Component, OnInit} from 'angular2/core';
-import {Roll} from './types/roll';
-import {RollService} from './roll.service';
+import {Roll} from '../types/roll';
+import {RollService} from '../services/roll.service';
 
 @Component({
   selector: 'lista-roller',
