@@ -1,0 +1,4 @@
+<div *ngIf="meddelandeFinns()" style="position: fixed; bottom: 0px; width: 100%" class="alert alert-dismissible" [ngClass]="messageType()" role="alert">
+  <button (click)="close()" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  {{meddelande.meddelande}}
+</div>

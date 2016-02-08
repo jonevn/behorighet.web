@@ -5,6 +5,9 @@ import {RouteConfig, RouterLink,RouterOutlet} from 'angular2/router';
 // Meny
 import {MenyComponent} from './meny.component'
 
+// Meddelanden
+import {MessageComponent} from './message.component';
+
 // Components
 import {ListaAnvandareComponent} from './anvandare/lista-anvandare.component';
 import {SkapaAnvandareComponent} from './anvandare/skapa-anvandare.component';
@@ -13,6 +16,9 @@ import {ListaRattigheterComponent} from './rattighet/lista-rattigheter.component
 
 // Backendservice
 import {BackendService} from './services/backend.service';
+
+// MessageService
+import {MessageService} from './message.service';
 
 //Services
 import {AnvandareService} from './services/anvandare.service';
@@ -24,9 +30,10 @@ import {RattighetService} from './services/rattighet.service';
     template: `
         <meny></meny>
         <router-outlet></router-outlet>
+        <message></message>
     `,
-    directives: [MenyComponent, ListaAnvandareComponent, SkapaAnvandareComponent, ListaRollerComponent, ListaRattigheterComponent, RouterOutlet],
-    providers: [HTTP_PROVIDERS, BackendService, AnvandareService, RollService, RattighetService],
+    directives: [MenyComponent, MessageComponent, ListaAnvandareComponent, SkapaAnvandareComponent, ListaRollerComponent, ListaRattigheterComponent, RouterOutlet],
+    providers: [HTTP_PROVIDERS, BackendService, MessageService, AnvandareService, RollService, RattighetService],
 })
 @RouteConfig([
   {path:'lista-anvandare', name:'ListaAnvändare', component: ListaAnvandareComponent},

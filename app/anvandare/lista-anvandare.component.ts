@@ -2,6 +2,8 @@ import {Component, OnInit} from 'angular2/core';
 import {Anvandare} from '../types/anvandare';
 import {Roll} from '../types/roll';
 import {AnvandareService} from '../services/anvandare.service';
+import {Meddelande, MeddelandeTyp} from '../types/meddelande';
+import {MessageService} from '../message.service';
 
 @Component({
   selector: 'lista-anvandare',
@@ -13,7 +15,7 @@ export class ListaAnvandareComponent implements OnInit {
     private anvandarna : Anvandare[];
     private anvandareRoller = new Map<string, Roll[]>();
 
-    constructor(private _anvandareService: AnvandareService) {}
+    constructor(private _anvandareService: AnvandareService, private _messageService: MessageService) {}
 
     ngOnInit(){
         this.hamtaAllaAnvandare();
@@ -21,6 +23,7 @@ export class ListaAnvandareComponent implements OnInit {
 
     hamtaAllaAnvandare(){
       this._anvandareService.allaAnvandare().subscribe(anvandare => this.anvandarna = anvandare);
+      this._messageService.publish(new Meddelande('Hämtat användare', MeddelandeTyp.OK));
     }
 
     public visaRoller(anvandare: Anvandare){
