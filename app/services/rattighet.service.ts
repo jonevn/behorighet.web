@@ -1,13 +1,13 @@
 import {Injectable} from 'angular2/core';
-import { Http } from 'angular2/http';
+import {BackendService} from './backend.service';
 import { Rattighet } from '../types/rattighet';
 
 @Injectable()
 export class RattighetService {
 
-    constructor(public http: Http) {}
+    constructor(public backend: BackendService) {}
 
     allaRattigheter(){
-        return this.http.get('http://localhost:8080/behorighet/rattighet').map(res => res.json());
+        return this.backend.hämta(this.backend.basUrl + '/rattighet');
     }
 }

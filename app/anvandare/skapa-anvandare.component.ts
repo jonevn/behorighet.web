@@ -6,7 +6,7 @@ import {AnvandareService} from '../services/anvandare.service';
 
 @Component({
   selector: 'skapa-anvandare',
-  templateUrl: 'app/skapa-anvandare.html'
+  templateUrl: 'app/anvandare/skapa-anvandare.html'
 })
 export class SkapaAnvandareComponent {
   anvandarnamn: string;

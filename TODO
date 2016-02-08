@@ -1,8 +1,7 @@
 generellt:
-backendservice, wrappa http
 filtrera och paginera, datatables?
 meddelanden?
-varför loggas det ut "no element found" vid vissa server anrop?
+varför loggas det ut "no element found" vid vissa server anrop? troligtvis för att det inte görs någon subscribe.
 
 funktioner:
 användare
@@ -10,7 +9,7 @@ användare
  - redigera
 roll
  - skapa
-  - ska gå att rättigheter från annan roll
+  - ska gå att kopiera rättigheter från annan roll
  - ta bort
 rättighet
  - skapa

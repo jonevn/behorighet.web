@@ -1,13 +1,13 @@
 import {Injectable} from 'angular2/core';
-import { Http } from 'angular2/http';
+import { BackendService } from './backend.service';
 import { Roll } from '../types/roll';
 
 @Injectable()
 export class RollService {
 
-    constructor(public http: Http) {}
+    constructor(public backend: BackendService) {}
 
     allaRoller(){
-        return this.http.get('http://localhost:8080/behorighet/roll').map(res => res.json());
+        return this.backend.hämta(this.backend.basUrl + '/roll');
     }
 }

@@ -4,7 +4,7 @@ import {RattighetService} from '../services/rattighet.service';
 
 @Component({
   selector: 'lista-rattigheter',
-  templateUrl: 'app/lista-rattigheter.html',
+  templateUrl: 'app/rattighet/lista-rattigheter.html',
   providers: [RattighetService]
 })
 export class ListaRattigheterComponent implements OnInit {

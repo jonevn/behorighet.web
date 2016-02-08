@@ -1,15 +1,14 @@
 import {Injectable} from 'angular2/core';
-import { Http, Headers } from 'angular2/http';
 import {Anvandare} from '../types/anvandare';
+import {BackendService} from './backend.service';
 
 @Injectable()
 export class AnvandareService {
 
-    constructor(public http: Http) {}
+    constructor(public backend: BackendService) {}
 
     allaAnvandare(){
-        return this.http.get('http://localhost:8080/behorighet/anvandare')
-            .map(res => res.json())
+        return this.backend.hämta(this.backend.basUrl + '/anvandare')
             .map((allaAnvandare: Array<any>) => {
                 let result: Array<Anvandare> = [];
                 if(allaAnvandare) {
@@ -22,24 +21,22 @@ export class AnvandareService {
     }
 
     taBort(anvandare: Anvandare){
-      return this.http.delete(anvandare.lankMedRelation("taBort").uri);
+      return this.backend.taBort(anvandare.lankMedRelation("taBort").uri);
     }
 
     hamtaRoller(anvandare: Anvandare){
-      return this.http.get(anvandare.lankMedRelationOchMetod("roller", "GET").uri).map(res => res.json());
+      return this.backend.hämta(anvandare.lankMedRelationOchMetod("roller", "GET").uri);
     }
 
     taBortAllaRoller(anvandare: Anvandare){
-      return this.http.delete(anvandare.lankMedRelationOchMetod("roller", "DELETE").uri);
+      return this.backend.taBort(anvandare.lankMedRelationOchMetod("roller", "DELETE").uri);
     }
 
     laggTillRoll(anvandareId: string, rollId: string){
-      this.http.put('http://localhost:8080/behorighet/anvandarroll/' + anvandareId + '/' + rollId, "").subscribe(data => console.log(data));
+      this.backend.uppdatera(this.backend.basUrl + '/anvandarroll/' + anvandareId + '/' + rollId, "");
     }
 
     skapa(anvandare: Anvandare){
-      var headers = new Headers();
-      headers.append("Content-Type", "application/json");
-      return this.http.post('http://localhost:8080/behorighet/anvandare', JSON.stringify(anvandare), {headers : headers});
+      return this.backend.skapa(this.backend.basUrl + '/anvandare', anvandare);
     }
   }

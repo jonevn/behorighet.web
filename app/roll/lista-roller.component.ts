@@ -4,7 +4,7 @@ import {RollService} from '../services/roll.service';
 
 @Component({
   selector: 'lista-roller',
-  templateUrl: 'app/lista-roller.html',
+  templateUrl: 'app/roll/lista-roller.html',
   providers: [RollService]
 })
 export class ListaRollerComponent implements OnInit {

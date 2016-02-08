@@ -11,6 +11,9 @@ import {SkapaAnvandareComponent} from './anvandare/skapa-anvandare.component';
 import {ListaRollerComponent} from './roll/lista-roller.component';
 import {ListaRattigheterComponent} from './rattighet/lista-rattigheter.component';
 
+// Backendservice
+import {BackendService} from './services/backend.service';
+
 //Services
 import {AnvandareService} from './services/anvandare.service';
 import {RollService} from './services/roll.service';
@@ -23,7 +26,7 @@ import {RattighetService} from './services/rattighet.service';
         <router-outlet></router-outlet>
     `,
     directives: [MenyComponent, ListaAnvandareComponent, SkapaAnvandareComponent, ListaRollerComponent, ListaRattigheterComponent, RouterOutlet],
-    providers: [HTTP_PROVIDERS, AnvandareService, RollService, RattighetService],
+    providers: [HTTP_PROVIDERS, BackendService, AnvandareService, RollService, RattighetService],
 })
 @RouteConfig([
   {path:'lista-anvandare', name:'ListaAnvändare', component: ListaAnvandareComponent},

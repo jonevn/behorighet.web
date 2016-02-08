@@ -5,7 +5,7 @@ import {AnvandareService} from '../services/anvandare.service';
 
 @Component({
   selector: 'lista-anvandare',
-  templateUrl: 'app/lista-anvandare.html',
+  templateUrl: 'app/anvandare/lista-anvandare.html',
   providers: [AnvandareService]
 })
 export class ListaAnvandareComponent implements OnInit {
