@@ -1,5 +1,6 @@
 import {Component, OnInit} from 'angular2/core';
 import {Anvandare} from '../types/anvandare';
+import {Anvandarroll} from '../types/anvandarroll';
 import {Roll} from '../types/roll';
 import {AnvandareService} from '../services/anvandare.service';
 import {Meddelande, MeddelandeTyp} from '../types/meddelande';
@@ -14,6 +15,7 @@ export class ListaAnvandareComponent implements OnInit {
 
     private anvandarna : Anvandare[];
     private anvandareRoller = new Map<string, Roll[]>();
+    private tillgangligaRoller = new Map<string, Roll[]>();
 
     constructor(private _anvandareService: AnvandareService, private _messageService: MessageService) {}
 
@@ -28,6 +30,7 @@ export class ListaAnvandareComponent implements OnInit {
 
     public visaRoller(anvandare: Anvandare){
       this._anvandareService.hamtaRoller(anvandare).subscribe(anvandarroller => this.anvandareRoller.set(anvandare.id, anvandarroller));
+      this._anvandareService.hämtaTillgängligaRoller(anvandare).subscribe(anvanddarroller => this.tillgangligaRoller.set(anvandare.id, anvanddarroller));
     }
 
     public visasRoller(anvandare: Anvandare){
@@ -38,8 +41,17 @@ export class ListaAnvandareComponent implements OnInit {
       return this.anvandareRoller.get(id);
     }
 
+    public tillRoller(id: string){
+      return this.tillgangligaRoller.get(id);
+    }
+
+    public väljRoll(användarroll: Anvandarroll){
+      return this._anvandareService.laggTillRoll(användarroll);
+    }
+
     public doljRoller(id: string){
       this.anvandareRoller.delete(id);
+      this.tillgangligaRoller.delete(id);
     }
 
     public taBortAnvandare(anvandare: Anvandare){

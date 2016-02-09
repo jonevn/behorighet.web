@@ -1,6 +1,8 @@
 import {Injectable} from 'angular2/core';
 import {Anvandare} from '../types/anvandare';
+import {Anvandarroll} from '../types/anvandarroll';
 import {BackendService} from './backend.service';
+
 
 @Injectable()
 export class AnvandareService {
@@ -28,12 +30,16 @@ export class AnvandareService {
       return this.backend.hämta(anvandare.lankMedRelationOchMetod("roller", "GET").uri);
     }
 
+    hämtaTillgängligaRoller(användare: Anvandare){
+      return this.backend.hämta(this.backend.basUrl + '/anvandarroll/' + användare.id + '/tillgangliga');
+    }
+
     taBortAllaRoller(anvandare: Anvandare){
       return this.backend.taBort(anvandare.lankMedRelationOchMetod("roller", "DELETE").uri);
     }
 
-    laggTillRoll(anvandareId: string, rollId: string){
-      this.backend.uppdatera(this.backend.basUrl + '/anvandarroll/' + anvandareId + '/' + rollId, "");
+    laggTillRoll(användarroll: Anvandarroll){
+      this.backend.uppdatera(användarroll.lankMedRelationOchMetod("läggtill", "PUT").uri, undefined);
     }
 
     skapa(anvandare: Anvandare){

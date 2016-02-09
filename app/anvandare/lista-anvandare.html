@@ -40,11 +40,20 @@
               </div>
             </div>
             <div class="panel-body">
-              <ul class="list-group">
-                <li class="list-group-item" *ngFor="#roll of roller(anvandare.id)">
-                  {{roll.rollNamn}} {{roll.beskrivning}}
-                </li>
-              </ul>
+              <div style="width: 50%; float: left">
+                <ul class="list-group">
+                  <li class="list-group-item" *ngFor="#roll of roller(anvandare.id)">
+                    {{roll.rollNamn}}
+                  </li>
+                </ul>
+              </div>
+              <div style="float: left">
+                <ul class="list-group">
+                  <li class="list-group-item" *ngFor="#tillRoll of tillRoller(anvandare.id)">
+                    {{tillRoll.rollNamn}} <span class="glyphicon glyphicon-plus"></span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </td>
