@@ -9,18 +9,36 @@ import {MessageService} from '../message.service';
 @Component({
   selector: 'lista-anvandare',
   templateUrl: 'app/anvandare/lista-anvandare.html',
-  providers: [AnvandareService]
+  providers: [AnvandareService],
+  styles: ['img:hover { cursor: pointer}']
 })
 export class ListaAnvandareComponent implements OnInit {
 
     private anvandarna : Anvandare[];
-    private anvandareRoller = new Map<string, Roll[]>();
-    private tillgangligaRoller = new Map<string, Roll[]>();
+    private anvandareRoller = new Map<string, Anvandarroll[]>();
+    private tillgangligaRoller = new Map<string, Anvandarroll[]>();
+
+    private valdAnvandarroll: Anvandarroll;
 
     constructor(private _anvandareService: AnvandareService, private _messageService: MessageService) {}
 
     ngOnInit(){
         this.hamtaAllaAnvandare();
+    }
+
+    sattValdRoll(roll: Anvandarroll){
+      this.valdAnvandarroll = roll;
+    }
+
+    valjRoll(anvandare: Anvandare){
+      this.valdAnvandarroll.anvandarId = anvandare.id;
+      this._anvandareService.laggTillRoll(this.valdAnvandarroll)
+        .subscribe(res => this.lagtTillRollFörAnvändare(anvandare));
+    }
+
+    lagtTillRollFörAnvändare(anvandare: Anvandare){
+      this._messageService.publish(new Meddelande("Lade till roll till användare", MeddelandeTyp.OK))
+      this.visaRoller(anvandare);
     }
 
     hamtaAllaAnvandare(){

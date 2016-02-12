@@ -31,7 +31,16 @@ export class AnvandareService {
     }
 
     hämtaTillgängligaRoller(användare: Anvandare){
-      return this.backend.hämta(this.backend.basUrl + '/anvandarroll/' + användare.id + '/tillgangliga');
+      return this.backend.hämta(this.backend.basUrl + '/anvandarroll/' + användare.id + '/tillgangliga')
+      .map((allaAnvandarroller: Array<any>) => {
+          let result: Array<Anvandarroll> = [];
+          if(allaAnvandarroller) {
+              allaAnvandarroller.forEach((anvandarroll) => {
+              result.push(new Anvandarroll(undefined, anvandarroll.rollId, anvandarroll.rollNamn, anvandarroll.links))
+          });
+      }
+      return result;
+      });
     }
 
     taBortAllaRoller(anvandare: Anvandare){
@@ -39,7 +48,7 @@ export class AnvandareService {
     }
 
     laggTillRoll(användarroll: Anvandarroll){
-      this.backend.uppdatera(användarroll.lankMedRelationOchMetod("läggtill", "PUT").uri, undefined);
+      return this.backend.uppdatera(användarroll.lankMedRelationOchMetod("läggtill", "PUT").uri, undefined);
     }
 
     skapa(anvandare: Anvandare){

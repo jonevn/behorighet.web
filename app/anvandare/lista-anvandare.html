@@ -40,17 +40,17 @@
               </div>
             </div>
             <div class="panel-body">
-              <div style="width: 50%; float: left">
+              <div style="width: 50%; float: left" (drop)="valjRoll(anvandare)" ondragover="event.preventDefault()">
                 <ul class="list-group">
-                  <li class="list-group-item" *ngFor="#roll of roller(anvandare.id)">
-                    {{roll.rollNamn}}
+                  <li class="list-group-item" style="margin-top: 5px" *ngFor="#roll of roller(anvandare.id)">
+                    <img alt="{{roll.rollNamn}}" draggable="true">
                   </li>
                 </ul>
               </div>
-              <div style="float: left">
+              <div style="width: 50%; float: left">
                 <ul class="list-group">
-                  <li class="list-group-item" *ngFor="#tillRoll of tillRoller(anvandare.id)">
-                    {{tillRoll.rollNamn}} <span class="glyphicon glyphicon-plus"></span>
+                  <li class="list-group-item" style="margin-top: 5px" *ngFor="#tillRoll of tillRoller(anvandare.id)">
+                    <img alt="{{tillRoll.rollNamn}}" draggable="true" (drag)="sattValdRoll(tillRoll)">
                   </li>
                 </ul>
               </div>
